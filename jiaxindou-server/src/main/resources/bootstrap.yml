@@ -1,0 +1,22 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: jiaxindou-server
+  profiles:
+    active: dev
+
+eureka:
+  instance:
+    preferIpAddress: true
+    # 注册周期心跳 默认30s  这里改成5s  建议生成环境使用默认值30
+    lease-renewal-interval-in-seconds: 30
+    hostname: jiaxindou-server
+  client:
+    # 是否将自己注册到eureka上去
+    register-with-eureka: false
+    # 是否从eureka上拉取已注册服务列表
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/
+
